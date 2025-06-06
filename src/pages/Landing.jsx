@@ -1,4 +1,5 @@
 import React from 'react';
+import { NavLink } from 'react-router-dom';
 
 // Main App component for the Quiz App Landing Page
 function App() {
@@ -19,11 +20,13 @@ function App() {
           Challenge yourself with fun quizzes across various topics and learn something new every day.
         </p>
         <div className="flex flex-col sm:flex-row justify-center gap-4">
-          <button className="bg-green-500 hover:bg-green-600 text-white font-semibold py-3 px-8 rounded-full shadow-lg transition duration-300 ease-in-out transform hover:scale-105 focus:outline-none focus:ring-4 focus:ring-green-300">
-            Start a Quiz
-          </button>
-          <button className="bg-transparent border-2 border-indigo-700 hover:bg-indigo-700 hover:text-white text-indigo-700 font-semibold py-3 px-8 rounded-full shadow-lg transition duration-300 ease-in-out transform hover:scale-105 focus:outline-none focus:ring-4 focus:ring-indigo-300">
-            Browse Categories
+            <NavLink to='/login'>
+                <button className="bg-green-500 hover:bg-green-600 text-white font-semibold py-3 px-8 rounded-full shadow-lg transition duration-300 ease-in-out transform hover:scale-105 focus:outline-none focus:ring-4 focus:ring-green-300">
+                    Start a Quiz
+                </button>
+            </NavLink>
+            <button className="bg-transparent border-2 border-indigo-700 hover:bg-indigo-700 hover:text-white text-indigo-700 font-semibold py-3 px-8 rounded-full shadow-lg transition duration-300 ease-in-out transform hover:scale-105 focus:outline-none focus:ring-4 focus:ring-indigo-300">
+                Browse Categories
           </button>
         </div>
       </header>
