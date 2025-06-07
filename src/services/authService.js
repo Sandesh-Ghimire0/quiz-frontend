@@ -10,3 +10,13 @@ export const loginUser = async (user) =>{
         return error
     }
 }
+
+export const currentUser = async ()=>{
+    try {
+        const res = await api.get('/user/me')
+        return res
+    } catch (error) {
+        console.log("Failed to fetch the current user: ", error.message)
+        return error
+    }
+}

@@ -103,16 +103,17 @@ function Login() {
             </div>
 
             <button
-            className="mt-6 w-full bg-white border border-gray-300 hover:bg-gray-100 text-gray-700 font-semibold py-3 px-8 rounded-full shadow-sm transition duration-300 ease-in-out transform hover:scale-105 focus:outline-none focus:ring-4 focus:ring-gray-300 flex items-center justify-center space-x-2"
+                onClick={() => window.location.href = 'http://localhost:8000/auth/google'}
+                className="mt-6 w-full bg-white border border-gray-300 hover:bg-gray-100 text-gray-700 font-semibold py-3 px-8 rounded-full shadow-sm transition duration-300 ease-in-out transform hover:scale-105 focus:outline-none focus:ring-4 focus:ring-gray-300 flex items-center justify-center space-x-2"
             >
             {/* Google Icon SVG */}
-            <svg className="w-5 h-5" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
-                <path d="M44.5 20H24V28.5H35.5C34.7 32.5 31.8 35.8 28 38.2L28.1 38.3L34.6 43.1L34.7 43.2C39.6 39.5 43 33.2 44.5 26.5L44.5 20Z" fill="#4285F4"/>
-                <path d="M24 44.5C30.6 44.5 36.2 42.1 40.2 38.2L34.7 32.8C31.5 35.1 28.2 36.5 24 36.5C18.6 36.5 13.9 33 12.1 27.6L12 27.7L6.4 32C8.3 36.2 14.8 40.5 24 44.5Z" fill="#34A853"/>
-                <path d="M12.1 27.6L6.4 32C6.1 31.4 6 30.7 6 30V18C6 17.3 6.1 16.6 6.4 16L12.1 20.3C13.9 14.9 18.6 11.5 24 11.5C27.9 11.5 31.2 13.1 33.7 15.3L39.2 10.3C36.2 7.5 32.1 5.5 24 5.5C14.8 5.5 8.3 9.8 6.4 14Z" fill="#F9BC05"/>
-                <path d="M24 11.5C28.2 11.5 31.5 13.1 33.7 15.3L39.2 10.3C36.2 7.5 32.1 5.5 24 5.5C14.8 5.5 8.3 9.8 6.4 14L12.1 18.3C13.9 14.9 18.6 11.5 24 11.5Z" fill="#EA4335"/>
-            </svg>
-            <span>Sign in with Google</span>
+                <svg className="w-5 h-5" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M44.5 20H24V28.5H35.5C34.7 32.5 31.8 35.8 28 38.2L28.1 38.3L34.6 43.1L34.7 43.2C39.6 39.5 43 33.2 44.5 26.5L44.5 20Z" fill="#4285F4"/>
+                    <path d="M24 44.5C30.6 44.5 36.2 42.1 40.2 38.2L34.7 32.8C31.5 35.1 28.2 36.5 24 36.5C18.6 36.5 13.9 33 12.1 27.6L12 27.7L6.4 32C8.3 36.2 14.8 40.5 24 44.5Z" fill="#34A853"/>
+                    <path d="M12.1 27.6L6.4 32C6.1 31.4 6 30.7 6 30V18C6 17.3 6.1 16.6 6.4 16L12.1 20.3C13.9 14.9 18.6 11.5 24 11.5C27.9 11.5 31.2 13.1 33.7 15.3L39.2 10.3C36.2 7.5 32.1 5.5 24 5.5C14.8 5.5 8.3 9.8 6.4 14Z" fill="#F9BC05"/>
+                    <path d="M24 11.5C28.2 11.5 31.5 13.1 33.7 15.3L39.2 10.3C36.2 7.5 32.1 5.5 24 5.5C14.8 5.5 8.3 9.8 6.4 14L12.1 18.3C13.9 14.9 18.6 11.5 24 11.5Z" fill="#EA4335"/>
+                </svg>
+                <span>Sign in with Google</span>
             </button>
 
             <div className='flex flex-col'>
