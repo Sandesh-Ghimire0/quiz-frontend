@@ -21,7 +21,7 @@ function App() {
                 </NavLink>
 
                 <NavLink
-                    to="/login"
+                    to="/signup"
                     className={({ isActive }) =>
                         `text-sm font-medium bg-blue-600 px-4 py-2 text-white rounded-md ${
                         isActive ? 'text-blue-600' : 'text-gray-700'

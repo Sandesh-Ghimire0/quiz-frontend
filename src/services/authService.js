@@ -11,6 +11,16 @@ export const loginUser = async (user) =>{
     }
 }
 
+export const signUpUser = async (user)=>{
+    try {
+        const res = await api.post('/user/signup',user)
+        return res
+    } catch (error) {
+        console.log("Login error : ",error.message)
+        return error
+    }
+}
+
 export const currentUser = async ()=>{
     try {
         const res = await api.get('/user/me')

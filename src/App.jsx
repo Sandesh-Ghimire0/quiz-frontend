@@ -9,6 +9,7 @@ import UsersPage from './pages/admin/UsersPage'
 import ProfilePage from './pages/admin/ProfilePage'
 import CreateQuestion from './pages/admin/CreateQuestion'
 import MyQuestion from './pages/admin/MyQuestion'
+import Signup from './pages/Signup'
 
 
 function App() {
@@ -21,6 +22,11 @@ function App() {
             path:'/login',
             element:<Login />
         },
+        {
+            path:'/signup',
+            element:<Signup />
+        },
+        // <---------------------------------- admin routes ----------------------------------------->
         {
             path:'/admin',
             element:<AdminLayout />,
@@ -52,6 +58,7 @@ function App() {
                 },
             ]
         },
+        // <--------------------------------- user routes ------------------------------------------------>
         {
             path:'/home',
             element:<Home />

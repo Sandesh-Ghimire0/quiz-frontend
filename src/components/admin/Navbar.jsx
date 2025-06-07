@@ -81,7 +81,9 @@ export default function Navbar() {
         </div>
 
         {/* Right Side: Logo */}
-        <div className="text-xl font-bold text-blue-600">QuizApp</div>
+        <NavLink to='/'>
+            <div className="text-xl font-bold text-blue-600">QuizApp</div>
+        </NavLink>
         </nav>
     </div>
   );
