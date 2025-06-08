@@ -10,3 +10,13 @@ export const createQuestion = async (questions)=>{
         return error
     }
 }
+
+export const getMyQuestions = async ()=>{
+    try {
+        const res = await api.get('/admin/get-created-questions')
+        return res
+    } catch (error) {
+        console.log("Failed to get the questions ::",error)
+        return error
+    }
+}
