@@ -5,6 +5,7 @@ import { changeQuestion } from '../../store/questionSlice'
 
 function QuestionEditForm({ question,setShowEditFormId,setSuccessId }) {
     const dispatch = useDispatch()
+    const [noAns, setNoAns] = useState(false)
 
     const [input, setInput] = useState({
         id:question.id,
@@ -19,6 +20,19 @@ function QuestionEditForm({ question,setShowEditFormId,setSuccessId }) {
     })
 
     const handleSave = async ()=>{
+        console.log(input.options, input.answer)
+        let found = false;
+        for (const opt of input.options) {
+            if (opt.text === input.answer) {
+                found = true;
+                break;
+            }
+        }
+        if (!found) {
+            setNoAns(true);
+            return
+        }   
+
         try {
             const res = await updateQuestion(input)
             if(res.status === 200){
@@ -58,6 +72,7 @@ function QuestionEditForm({ question,setShowEditFormId,setSuccessId }) {
             value={input.answer}
             onChange={(e) => setInput({ ...input, answer: e.target.value })}
             />
+            {noAns && <p className='text-red-600'>Answer most match one option (case-sensitive)</p>}
         </div>
 
         <div className="mb-4">

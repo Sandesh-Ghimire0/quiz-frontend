@@ -1,5 +1,9 @@
 import {createBrowserRouter , Router, RouterProvider} from 'react-router-dom'
 import {QueryClient, QueryClientProvider} from '@tanstack/react-query'
+import { useDispatch } from 'react-redux'
+import { login } from './store/authSlice'
+import { currentUser } from './services/authService'
+import { useEffect } from 'react'
 
 
 import Landing from "./pages/Landing"
@@ -15,6 +19,20 @@ import Signup from './pages/Signup'
 
 
 function App() {
+    const dispatch = useDispatch()
+    
+    async function fetchUser(){
+        const res = await currentUser()
+
+        if(res.status === 200){
+            dispatch(login(res.data.data))
+        }
+    }
+
+     useEffect(()=>{
+        fetchUser()
+    }, [])
+
     const router = createBrowserRouter([
         {
             path:'/',

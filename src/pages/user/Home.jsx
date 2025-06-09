@@ -5,19 +5,19 @@ import { useDispatch } from 'react-redux'
 import { login } from '../../store/authSlice'
 
 function Home() {
-    const dispatch = useDispatch()
+    // const dispatch = useDispatch()
 
-    async function fetchUser(){
-        const res = await currentUser()
+    // async function fetchUser(){
+    //     const res = await currentUser()
 
-        if(res.status === 200){
-            dispatch(login(res.data.data))
-        }
-    }
+    //     if(res.status === 200){
+    //         dispatch(login(res.data.data))
+    //     }
+    // }
 
-    useEffect(()=>{
-        fetchUser()
-    }, [])
+    // useEffect(()=>{
+    //     fetchUser()
+    // }, [])
 
     return (
         <div>Home</div>
