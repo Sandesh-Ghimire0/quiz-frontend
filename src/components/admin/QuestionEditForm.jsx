@@ -1,7 +1,13 @@
 import React, { useState } from 'react'
+import { updateQuestion } from '../../services/adminService'
+import {useDispatch} from 'react-redux'
+import { changeQuestion } from '../../store/questionSlice'
 
-function QuestionEditForm({ question,setShowEditFormId }) {
+function QuestionEditForm({ question,setShowEditFormId,setSuccessId }) {
+    const dispatch = useDispatch()
+
     const [input, setInput] = useState({
+        id:question.id,
         title: question.title,
         answer: question.answer,
         options: [
@@ -13,14 +19,27 @@ function QuestionEditForm({ question,setShowEditFormId }) {
     })
 
     const handleSave = async ()=>{
-        console.log(input)
+        try {
+            const res = await updateQuestion(input)
+            if(res.status === 200){
+                dispatch(changeQuestion({newQuestion:res.data.data, questionId:res.data.data.id}))
 
-        setShowEditFormId(prev => !prev)
+                setSuccessId(res.data.data.id)
+                setTimeout(() => {
+                    setSuccessId('')
+                }, 3000);
+            }
+        } catch (error) {
+            console.log("Failed to update: ",error)
+        }
+
+        setShowEditFormId('')
     }
 
 
     return (
-        <div className="bg-white p-6 rounded-xl shadow-md mb-6">
+        <div className="bg-white p-6 rounded-xl shadow-md mb-6 relative">
+        
         <div className="mb-4">
             <label className="inline-flex text-gray-700 font-medium mb-1">Question:</label>
             <input

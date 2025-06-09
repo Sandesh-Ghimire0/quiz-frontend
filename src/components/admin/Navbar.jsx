@@ -7,7 +7,7 @@ export default function Navbar() {
   const toggleDropdown = () => setDropdownOpen(!isDropdownOpen);
 
   return (
-    <div className='bg-white shadow-md px-6 py-3 '>
+    <div className='bg-white shadow-md px-6 py-3'>
         <nav className="container flex flex-row-reverse items-center justify-between">
         {/* Left Side: Navigation */}
         <div className="flex items-center gap-6">

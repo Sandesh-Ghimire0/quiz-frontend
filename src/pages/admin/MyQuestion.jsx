@@ -1,14 +1,16 @@
 import React, { useEffect, useState } from 'react'
-import { getMyQuestions } from '../../services/adminService'
+import { deleteQuestion, getMyQuestions } from '../../services/adminService'
 import { useSelector,useDispatch} from 'react-redux'
-import { saveQuestion } from '../../store/questionSlice'
+import { removeQuestion, saveQuestion } from '../../store/questionSlice'
 import {useQuery} from '@tanstack/react-query'
 import Questions from '../../components/admin/Questions'
 import QuestionEditForm from '../../components/admin/QuestionEditForm'
 
 function MyQuestion() {
     const [editFormId, setShowEditFormId] = useState('')
-
+    const [successId, setSuccessId] = useState('')
+    const [showSuccessMessage, setShowSuccessMessage] = useState(false)
+    
     const questions = useSelector(state => state.question.data)
     const dispatch = useDispatch()
 
@@ -33,15 +35,38 @@ function MyQuestion() {
         setShowEditFormId(id)
     }
 
+    async function handleDelete(id){
+        try {
+            const res = await deleteQuestion(id)
+            if(res.status === 200){
+                dispatch(removeQuestion(id))
+            }
+        } catch (error) {
+            console.log("Error occured while deleting :: ", error)
+        }
+    }
+
 
     return (
-    <div className="mt-10 px-4">
+    <div className="mt-10 px-4 relative">
         <h2 className="text-2xl font-semibold text-center mb-6 grid grid-col-2">My Questions</h2>
+       
         <div className="grid grid-cols-3 md:grid-cols-2 gap-6">
             {questions?.map((q) => (
                 q.id === editFormId
-                ?<QuestionEditForm question={q} setShowEditFormId={setShowEditFormId}/>
-                :<Questions key={q.id} question={q} handleEdit={handleEdit}/>
+                ?<QuestionEditForm 
+                    key={q.id} 
+                    question={q} 
+                    setShowEditFormId={setShowEditFormId} 
+                    setSuccessId={setSuccessId} 
+                />
+                :<Questions 
+                    key={q.id} 
+                    question={q} 
+                    handleEdit={handleEdit} 
+                    successId={successId}
+                    handleDelete={handleDelete}
+                />
             ))}
 
         </div>

@@ -20,3 +20,25 @@ export const getMyQuestions = async ()=>{
         return error
     }
 }
+
+
+export const updateQuestion = async (question)=>{
+    try {
+        const res = await api.put('/admin/update-question',{question})
+        return res
+    } catch (error) {
+        console.log("Error occured while updating: ",error)
+        return error
+    }
+}
+
+
+export const deleteQuestion = async (questionId)=>{
+    try {
+        const res = await api.post('/admin/delete-question', {questionId})
+        return res
+    } catch (error) {
+        console.log("Failed to Delete", error)
+        return error
+    }
+}
