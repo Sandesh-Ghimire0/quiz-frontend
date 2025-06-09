@@ -1,14 +1,23 @@
 import React from 'react'
-import {Outlet} from 'react-router-dom'
+import {NavLink, Outlet} from 'react-router-dom'
 import Navbar from './Navbar'
-import { useDispatch } from 'react-redux'
+import {  useSelector } from 'react-redux'
 import { useEffect } from 'react'
 import { getMyQuestions } from '../../services/adminService'
 import { saveQuestion } from '../../store/questionSlice'
 
 
-function AdminLayout() {
 
+function AdminLayout() {
+    const status = useSelector(state => state.auth.status)
+    if(!status){
+        return <div className='mt-5 ml-10'>
+            <h2 className='text-xl font-bold mb-5'>Unauthorized Access</h2>
+            <NavLink to="/">
+                <button className='bg-blue-600 text-white px-4 py-2 cursor-pointer'>Go to Home</button>
+            </NavLink>
+        </div>
+    }
     return (
         <>
             <Navbar />

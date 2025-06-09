@@ -1,10 +1,26 @@
-import { NavLink } from 'react-router-dom';
+import { NavLink, useNavigate } from 'react-router-dom';
 import { useState } from 'react';
+import { logoutUser } from '../../services/authService';
+import { useDispatch } from 'react-redux'
+import { logout } from '../../store/authSlice';
+import { saveQuestion } from '../../store/questionSlice';
 
 export default function Navbar() {
   const [isDropdownOpen, setDropdownOpen] = useState(false);
-
   const toggleDropdown = () => setDropdownOpen(!isDropdownOpen);
+
+  const dispatch = useDispatch()
+  const navigate = useNavigate()
+
+  const handleLogout = async () =>{
+    const res = await logoutUser()
+    if(res.status === 200){
+        dispatch(logout())
+        dispatch(saveQuestion([]))
+
+        navigate('/')
+    }
+  }
 
   return (
     <div className='bg-white shadow-md px-6 py-3'>
@@ -73,7 +89,7 @@ export default function Navbar() {
             </NavLink>
 
             <NavLink
-            to="/logout"
+            onClick={handleLogout}
             className="text-sm font-medium text-red-500 hover:text-red-600"
             >
             Logout

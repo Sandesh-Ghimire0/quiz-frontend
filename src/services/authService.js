@@ -30,3 +30,14 @@ export const currentUser = async ()=>{
         return error
     }
 }
+
+
+export const logoutUser = async () =>{
+     try {
+        const res = await api.post('/user/logout',{})
+        return res
+    } catch (error) {
+        console.log("Failed to logout: ", error.message)
+        return error
+    }
+}
