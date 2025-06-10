@@ -16,9 +16,12 @@ import ProfilePage from './pages/admin/ProfilePage'
 import CreateQuestion from './pages/admin/CreateQuestion'
 import MyQuestion from './pages/admin/MyQuestion'
 import Signup from './pages/Signup'
+import UserLayout from './components/user/UserLayout'
+import Profile from './pages/user/Profile'
 
 
 function App() {
+    // for fetching the current user data if the page is refresh
     const dispatch = useDispatch()
     
     async function fetchUser(){
@@ -80,8 +83,17 @@ function App() {
         },
         // <--------------------------------- user routes ------------------------------------------------>
         {
-            path:'/home',
-            element:<Home />
+            element:<UserLayout />,
+            children:[
+                {
+                    path:'/home',
+                    element:<Home />
+                },
+                {
+                    path:'/profile',
+                    element:<Profile />
+                }
+            ]
         }
     ])
 
