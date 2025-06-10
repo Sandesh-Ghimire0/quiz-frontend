@@ -18,6 +18,7 @@ import MyQuestion from './pages/admin/MyQuestion'
 import Signup from './pages/Signup'
 import UserLayout from './components/user/UserLayout'
 import Profile from './pages/user/Profile'
+import Quiz from './pages/user/Quiz'
 
 
 function App() {
@@ -92,8 +93,12 @@ function App() {
                 {
                     path:'/profile',
                     element:<Profile />
-                }
+                },
             ]
+        },
+        {
+            path:'/quiz',
+            element:<Quiz />
         }
     ])
 
@@ -101,6 +106,7 @@ function App() {
     return (
         <QueryClientProvider client={queryClient}>
             <RouterProvider router={router}></RouterProvider>
+
         </QueryClientProvider>
     )
 }
