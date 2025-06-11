@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 
-function QuizRead({ question, selectedIndex, onAnswer, index,noOfQuestions }) {
+function QuizRead({ question, selectedIndex, onAnswer, currQuestionNo,noOfQuestions,mode }) {
     const answered = selectedIndex !== undefined;
 
     const handleOptionClick = (index) => {
@@ -10,7 +10,7 @@ function QuizRead({ question, selectedIndex, onAnswer, index,noOfQuestions }) {
 
     return (
         <li className="bg-white p-6 rounded-2xl shadow-md border border-gray-200">
-            <span className='text-gray-500 text-md mb-3'>question : {index +'/'+ noOfQuestions}</span>
+            <span className='text-gray-500 text-md mb-3'>question : {currQuestionNo +'/'+ noOfQuestions}</span>
             <p className="text-lg font-medium mb-4">{question.title}</p>
             <div className="space-y-2">
                 {question.options.map((option, index) => {
@@ -20,12 +20,20 @@ function QuizRead({ question, selectedIndex, onAnswer, index,noOfQuestions }) {
                         const isCorrect = option.text === question.answer;
                         const isSelected = index === selectedIndex;
 
-                        if (isCorrect) {
+                        if(mode === 'read'){
+                            if (isCorrect) {
                             style = 'bg-green-200 text-green-700';
-                        } else if (isSelected) {
-                            style = 'bg-red-200 text-red-700';
-                        } else {
-                            style = 'bg-gray-100 text-gray-500';
+                            } else if (isSelected) {
+                                style = 'bg-red-200 text-red-700';
+                            } else {
+                                style = 'bg-gray-100 text-gray-500';
+                            }
+                        } else if(mode === 'test'){
+                            if(isSelected){
+                                style = 'bg-blue-200 text-blue-700'
+                            } else{
+                                style = 'bg-gray-100 text-gray-500'
+                            }
                         }
                     }
 
@@ -41,7 +49,7 @@ function QuizRead({ question, selectedIndex, onAnswer, index,noOfQuestions }) {
                 })}
             </div>
         </li>
-    );
+    ); 
 }
 
-export default QuizRead;
+export default React.memo(QuizRead);

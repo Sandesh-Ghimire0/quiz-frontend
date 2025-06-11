@@ -19,6 +19,7 @@ import Signup from './pages/Signup'
 import UserLayout from './components/user/UserLayout'
 import Profile from './pages/user/Profile'
 import Quiz from './pages/user/Quiz'
+import Report from './components/user/Report'
 
 
 function App() {
@@ -94,6 +95,10 @@ function App() {
                     path:'/profile',
                     element:<Profile />
                 },
+                {
+                    path:'/report',
+                    element:<Report />
+                }
             ]
         },
         {

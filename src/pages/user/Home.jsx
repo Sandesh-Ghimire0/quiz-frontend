@@ -12,7 +12,7 @@ function Home() {
     const handleSubmit = async (e) =>{
         e.preventDefault(); // prevent default form submission
         navigate(`/quiz?noOfQuestions=${nQuestions}&mode=${mode}`)
-
+ 
         // questions are fetched in /quiz page
     }
 
