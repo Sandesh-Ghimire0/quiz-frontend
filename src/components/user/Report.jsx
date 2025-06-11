@@ -1,6 +1,7 @@
 // Report.jsx
 import { useLocation, useNavigate } from 'react-router-dom';
-import React from 'react';
+import React, { useState } from 'react';
+import AllSolutions from './AllSolutions';
 
 function generateReportSummary(questions, answers) {
     let total = questions.length;
@@ -45,6 +46,7 @@ const Report = () => {
     const location = useLocation();
     const navigate = useNavigate();
     const { questions, answers } = location.state || {};
+    const [viewSolutions , setViewSolutions] = useState(false)
 
     if (!questions || !answers) {
         return (
@@ -63,7 +65,8 @@ const Report = () => {
     const report = generateReportSummary(questions, answers);
 
     return (
-        <div className="bg-white p-6 rounded-xl shadow-md text-gray-800 space-y-4 max-w-md mx-auto mt-10">
+        <>
+            <div className="bg-white p-6 rounded-xl shadow-md text-gray-800 space-y-4 max-w-md mx-auto mt-10">
             <h2 className="text-2xl font-bold text-blue-600">Quiz Performance</h2>
             <p><strong>Total Questions:</strong> {report.total}</p>
             <p><strong>Attempted:</strong> {report.attempted}</p>
@@ -79,7 +82,17 @@ const Report = () => {
             >
                 Retake Quiz
             </button>
+
+            <div 
+                className='text-blue-700 hover:underline cursor-pointer'
+                onClick={()=>setViewSolutions(prev => !prev)}
+            >{viewSolutions ? 'hide solutions': 'view solutions'}</div>
+
         </div>
+        {
+            viewSolutions && <AllSolutions questions={questions} answers={answers}/>
+        }
+        </>
     );
 };
 
