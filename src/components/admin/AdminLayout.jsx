@@ -10,14 +10,23 @@ import { saveQuestion } from '../../store/questionSlice'
 
 function AdminLayout() {
     const status = useSelector(state => state.auth.status)
-    if(!status){
-        return <div className='mt-5 ml-10'>
-            <h2 className='text-xl font-bold mb-5'>Unauthorized Access</h2>
-            <NavLink to="/">
-                <button className='bg-blue-600 text-white px-4 py-2 cursor-pointer'>Go to Home</button>
-            </NavLink>
-        </div>
+    const userData = useSelector(state => state.auth.userData)
+
+    if (!status || !userData) {
+        return <div className="mt-5 ml-10">Loading...</div>;
     }
+
+    if (userData.role === "USER") {
+        return (
+            <div className='mt-5 ml-10'>
+                <h2 className='text-xl font-bold mb-5'>Unauthorized Access</h2>
+                <NavLink to="/">
+                    <button className='bg-blue-600 text-white px-4 py-2 cursor-pointer'>Go to Home</button>
+                </NavLink>
+            </div>
+        );
+    }
+
     return (
         <>
             <Navbar />

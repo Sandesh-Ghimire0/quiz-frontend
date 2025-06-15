@@ -1,7 +1,24 @@
 import React from 'react'
 import { NavLink } from 'react-router-dom';
+import { logoutUser } from '../../services/authService';
+import { logout } from '../../store/authSlice';
+import { useDispatch } from 'react-redux';
+import { saveQuestion } from '../../store/questionSlice';
+import { useNavigate } from 'react-router-dom';
 
 function UserNav() {
+    const dispatch = useDispatch()
+    const navigate = useNavigate()
+
+    const handleLogout = async () =>{
+        const res = await logoutUser()
+        if(res.status === 200){
+            dispatch(logout())
+            dispatch(saveQuestion([]))
+    
+            navigate('/')
+        }
+      }
    return (
     <div className='bg-white shadow-md px-6 py-3'>
         <nav className="container flex flex-row-reverse items-center justify-between">
@@ -20,6 +37,7 @@ function UserNav() {
             </NavLink>
 
             <NavLink
+            onClick={handleLogout}
             className="text-sm font-medium text-red-500 hover:text-red-600"
             >
             Logout

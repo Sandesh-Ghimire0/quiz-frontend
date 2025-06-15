@@ -30,7 +30,7 @@ function App() {
         const res = await currentUser()
 
         if(res.status === 200){
-            dispatch(login(res.data.data))
+            dispatch(login({userData:res.data.data}))
         }
     }
 

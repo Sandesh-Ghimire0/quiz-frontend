@@ -27,7 +27,7 @@ function Login() {
             const message = res.response?.data.message
 
             if(res.status === 200){
-                dispatch(login(loggedInUser))
+                dispatch(login({userData:loggedInUser}))
                 if(loggedInUser.role === 'USER'){
                     navigate('/home')
                 } else if(loggedInUser.role === 'ADMIN'){
