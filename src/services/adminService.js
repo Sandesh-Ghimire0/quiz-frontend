@@ -42,3 +42,24 @@ export const deleteQuestion = async (questionId)=>{
         return error
     }
 }
+
+
+export const getUsersInfo = async ()=>{
+    try {
+        const res = await api.get('/admin/get-all-users')
+        return res
+    } catch (error) {
+        console.log("Failed to get Users data: ",error)
+        return error
+    }
+}
+
+export const deleteUser = async (id)=>{
+    try {
+        const res = await api.delete(`/admin/delete-user/${id}`)
+        return res
+    } catch (error) {
+        console.log("Failed to delete the User : ",error)
+        return error
+    }
+}
