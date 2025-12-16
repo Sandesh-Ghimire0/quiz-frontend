@@ -10,17 +10,12 @@ function generateReportSummary(questions, answers) {
     let incorrect = 0;
 
     questions.forEach((q, index) => {
-        // retreving id of each question sequentially
         const questionId = Object.keys(answers)[index];
-        // geting the index or option selected by user
         const selectedIndex = answers[questionId];
 
-        // checking if any option is selected or not
         if (selectedIndex !== undefined) {
             attempted++;
-            // getting the selected option
             const selectedText = q.options[selectedIndex]?.text;
-            // checking if selected option match the answer or not
             if (selectedText === q.answer) {
                 correct++;
             } else {

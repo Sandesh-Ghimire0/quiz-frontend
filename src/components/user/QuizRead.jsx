@@ -1,13 +1,16 @@
 import React, { useState } from 'react';
 
 function QuizRead({ question, selectedIndex, onAnswer, currQuestionNo,noOfQuestions,mode }) {
+    console.log(selectedIndex)
     const answered = selectedIndex !== undefined;
 
     const handleOptionClick = (index) => {
-        if (answered) return;
+        if (answered) return; // multiple attempt not allowed
         onAnswer(index);
     };
 
+
+    
     return (
         <li className="bg-white p-6 rounded-2xl shadow-md border border-gray-200">
             <span className='text-gray-500 text-md mb-3'>question : {currQuestionNo +'/'+ noOfQuestions}</span>

@@ -20,7 +20,6 @@ function QuestionEditForm({ question,setShowEditFormId,setSuccessId }) {
     })
 
     const handleSave = async ()=>{
-        console.log(input.options, input.answer)
         let found = false;
         for (const opt of input.options) {
             if (opt.text === input.answer) {

@@ -32,9 +32,8 @@ function Quiz() {
         queryFn: getQuestions,
         refetchOnMount: true,
         refetchOnWindowFocus: false,
-        staleTime: 0,
+        staleTime: 0,   
     });
-
 
 
     const goNext = () => {
@@ -55,8 +54,10 @@ function Quiz() {
         }));
     }, []);
 
+
+
     const currentQuestion = questions[currentIndex]
-    const currentAnswer = answers[currentQuestion?.id];
+    const currentAnswer = answers[currentQuestion?.id]; // index
 
      if (isPending) {
         return (

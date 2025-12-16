@@ -97,7 +97,7 @@ export default function Navbar() {
         </div>
 
         {/* Right Side: Logo */}
-        <NavLink to='/'>
+        <NavLink to='/admin/dashboard'>
             <div className="text-xl font-bold text-blue-600">QuizApp</div>
         </NavLink>
         </nav>

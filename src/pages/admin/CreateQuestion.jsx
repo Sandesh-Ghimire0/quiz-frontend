@@ -2,6 +2,7 @@ import React from 'react'
 import { useState } from 'react';
 import Editor from '@monaco-editor/react';
 import { createQuestion } from '../../services/adminService';
+import JSON5 from 'json5'
 
 
 function CreateQuestion() {
@@ -23,7 +24,7 @@ function CreateQuestion() {
     const [inputQuestion, setInputQuestion] = useState(initialInput)
 
     const handleQuestionSubmit = async () =>{
-        const parsedQuestion = new Function(`return ${inputQuestion}`)();
+        const parsedQuestion = JSON5.parse(inputQuestion)
         try {
             const res = await createQuestion(parsedQuestion)
             if(res.status === 200){

@@ -6,7 +6,7 @@ export const loginUser = async (user) =>{
         const res = await api.post('/user/login',user)
         return res
     } catch (error) {
-        console.log("Login error : ",error.message)
+        console.log("Login error : ",error)
         return error
     }
 }

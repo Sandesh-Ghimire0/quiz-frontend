@@ -7,9 +7,8 @@ import Questions from '../../components/admin/Questions'
 import QuestionEditForm from '../../components/admin/QuestionEditForm'
 
 function MyQuestion() {
-    const [editFormId, setShowEditFormId] = useState('')
+    const [showEditFormId, setShowEditFormId] = useState('')
     const [successId, setSuccessId] = useState('')
-    const [showSuccessMessage, setShowSuccessMessage] = useState(false)
     
     const questions = useSelector(state => state.question.data)
     const dispatch = useDispatch()
@@ -53,7 +52,7 @@ function MyQuestion() {
        
         <div className="grid grid-cols-3 md:grid-cols-2 gap-6">
             {questions?.map((q) => (
-                q.id === editFormId
+                q.id === showEditFormId
                 ?<QuestionEditForm 
                     key={q.id} 
                     question={q} 
