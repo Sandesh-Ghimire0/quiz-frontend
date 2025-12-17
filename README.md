@@ -1,12 +1,46 @@
-# React + Vite
+## Quiz App
+A full stack Quiz web application with admin panel.
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+## Description
+This is a MERN stack application where frontend is built using React and backend is build using express and MySQL database. This application allows the user to take quiz in different modes. It has a admin panel from where admin can create ,Read, Delete and update Quiz Questions.
 
-Currently, two official plugins are available:
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+## Table of content
+- [Key Feature](#key-features)
+- [Technologies Used](#technologies-used)
+- [Screenshots](#screenshots)
+- [Backend](#backend)
 
-## Expanding the ESLint configuration
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+## key features
+`Admin`
+- **Operations :** create, read, update and delete Quiz Question. Single or Multiple question can be added at once through a text editor.
+- **Authentication :** Admin are authenticated using the JWT 
+
+
+`User`
+- **Operations :** Define the no. of question and choose mode(Test or Read).
+- **Authentication :** Google OAuth and JWT is used for authentication.
+- **Report :** summarizes a user quiz performance by calculating total questions, attempted, skipped, correct, incorrect answers, score etc.
+
+## Technologies used
+- **Frontend :** React, RTK, Tailwind css, axios
+- **Backend :** NodeJS, Express, JWT, Prisma, passport-google-oauth20
+- **Database :** MySQL
+
+
+## Screenshots
+![Login Page](public/login.png)
+#### Admin
+![create Question](public/createQuestion.png)
+![view question](public/viewQuestion.png)
+#### User
+![home](public/home.png)
+![list1](public/list1.png)
+![list2](public/list2.png)
+![report1](public/report1.png)
+![report2](public/report2.png)
+
+
+## Backend
+https://github.com/Sandesh-Ghimire0/quiz-backend
